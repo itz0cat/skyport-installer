@@ -12,8 +12,6 @@ echo ""
 # Install necessary dependencies
 echo "Installing necessary dependencies..."
 
-# Step 1: Create keyring directory
-sudo mkdir -p /etc/apt/keyrings
 
 # Step 2: Add NodeSource GPG key
 curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | sudo gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg

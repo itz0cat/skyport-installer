@@ -10,7 +10,7 @@ echo "╚══════╝ ╚═════╝ ╚══════╝ �
 echo ""
 
 # Install necessary dependencies
-echo "Installing necessary dependencies..."
+echo "Installing necessary dependencies...Subscribe To SoloPlayz!"
 
 # Step 1: Create keyring directory
 sudo mkdir -p /etc/apt/keyrings
@@ -46,4 +46,4 @@ npm run createUser
 node .
 
 
-echo "Installation and setup completed successfully!"
+echo "Installation Completed - Subscribe To SoloPlayz!"

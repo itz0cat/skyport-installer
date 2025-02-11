@@ -1,17 +1,7 @@
 #!/bin/bash
 
 # Display ASCII Art Logo
-echo ""
-echo " ______   __               __   ____              __       "
-echo "/\__  _\ /\ \__          /'__`\/\  _`\           /\ \__    "
-echo "\/_/\ \/ \ \ ,_\  ____  /\ \/\ \ \ \/\_\     __  \ \ ,_\   "
-echo "   \ \ \  \ \ \/ /\_ ,`\\ \ \ \ \ \ \/_/_  /'__`\ \ \ \/   "
-echo "    \_\ \__\ \ \_\/_/  /_\ \ \_\ \ \ \L\ \/\ \L\.\_\ \ \_  "
-echo "    /\_____\\ \__\ /\____\\ \____/\ \____/\ \__/.\_\\ \__\ "
-echo "    \/_____/ \/__/ \/____/ \/___/  \/___/  \/__/\/_/ \/__/ "
-echo ""
-echo "🚀 Skyport Installer - Maintained by Itz0Cat"
-echo ""
+
 
 # Ensure the script is run as root
 if [[ $EUID -ne 0 ]]; then

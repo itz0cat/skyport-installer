@@ -1,54 +1,66 @@
-#!/bin/bash
+ #!/bin/bash
 
-# Automatically re-run as root if not already
-if [[ $EUID -ne 0 ]]; then
-  echo "🔄 Re-running script as root..."
-  exec sudo bash "$0" "$@"
+set -e  # Stop the script on any errors
+
+# Display the ASCII Art logo
+echo " _____ _       _____ _____       _   "
+echo "|_   _| |     |  _  /  __ \     | |  "
+echo "  | | | |_ ___| |/' | /  \/ __ _| |_ "
+echo "  | | | __|_  /  /| | |    / _` | __|"
+echo " _| |_| |_ / /\ |_/ / \__/\ (_| | |_ "
+echo " \___/ \__/___|\___/ \____/\__,_|\__|"
+echo ""
+echo "Modfied by Itz0Cat"
+echo "OG script by SoloPlayzDev"
+
+# Step 1: Install necessary dependencies
+echo "[INFO] Installing necessary dependencies..."
+sudo apt update -y
+
+# Ensure curl, sudo, and gpg are installed
+sudo apt install -y curl sudo gpg
+
+# Step 2: Set up Node.js repository
+echo "[INFO] Setting up Node.js repository..."
+sudo mkdir -p /etc/apt/keyrings
+if [ ! -f "/etc/apt/keyrings/nodesource.gpg" ]; then
+    curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | sudo gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg
+fi
+echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_20.x nodistro main" | sudo tee /etc/apt/sources.list.d/nodesource.list > /dev/null
+
+# Step 3: Install Node.js and Git
+echo "[INFO] Installing Node.js and Git..."
+sudo apt update -y
+sudo apt install -y nodejs git
+
+# Step 4: Clone the repository if it doesn’t exist
+if [ ! -d "panel5" ]; then
+    echo "[INFO] Cloning the repository..."
+    git clone https://github.com/achul123/panel5
+else
+    echo "[INFO] Repository already exists. Pulling latest changes..."
+    cd panel5
+    git pull
+    cd ..
 fi
 
-# Install necessary dependencies
-echo "🔧 Installing dependencies..."
-mkdir -p /etc/apt/keyrings
+# Step 5: Navigate to project directory
+cd panel5
 
-# Add NodeSource GPG key
-echo "🔑 Adding NodeSource GPG key..."
-curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg
-
-# Add NodeSource repository
-echo "📦 Adding Node.js repository..."
-echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_20.x nodistro main" | tee /etc/apt/sources.list.d/nodesource.list
-
-# Update package list
-echo "🔄 Updating package list..."
-apt update
-
-# Install Node.js and Git
-echo "⬇️ Installing Node.js and Git..."
-apt install -y nodejs git
-
-# Clone the repository
-echo "📥 Cloning Skyport Panel repository..."
-git clone https://github.com/achul123/panel5 || { echo "❌ Failed to clone repository"; exit 1; }
-
-# Navigate to project directory
-cd panel5 || { echo "❌ Failed to enter panel5 directory"; exit 1; }
-
-# Install project dependencies
-echo "📦 Installing project dependencies..."
+# Step 6: Install project dependencies
+echo "[INFO] Installing project dependencies..."
 npm install
 
-# Run database seed script
-echo "🌱 Seeding database..."
-npm run seed || { echo "❌ Failed to seed database"; exit 1; }
+# Step 7: Run database seed script
+echo "[INFO] Running database seed..."
+npm run seed
 
-# Create a new user
-echo "👤 Creating a new user..."
-npm run createUser || { echo "❌ Failed to create user"; exit 1; }
+# Step 8: Create a new user
+echo "[INFO] Creating a new user..."
+npm run createUser
 
-# Start Skyport
-echo "🚀 Starting Skyport Panel..."
+# Step 9: Start Skyport
+echo "[INFO] Starting Skyport..."
 node .
 
-echo ""
-echo "✅ Installation Completed - Subscribe To Itz0Cat! 🎉"
-echo ""
+echo "[SUCCESS] Installation Completed!"

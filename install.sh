@@ -1,15 +1,9 @@
  #!/bin/bash
-
+sudo apt install figlet
 set -e  # Stop the script on any errors
 
-# Display the ASCII Art logo
-echo " _____ _       _____ _____       _   "
-echo "|_   _| |     |  _  /  __ \     | |  "
-echo "  | | | |_ ___| |/' | /  \/ __ _| |_ "
-echo "  | | | __|_  /  /| | |    / _` | __|"
-echo " _| |_| |_ / /\ |_/ / \__/\ (_| | |_ "
-echo " \___/ \__/___|\___/ \____/\__,_|\__|"
-echo ""
+figlet -f slant "Skyport"
+
 echo "Modfied by Itz0Cat"
 echo "OG script by SoloPlayzDev"
 

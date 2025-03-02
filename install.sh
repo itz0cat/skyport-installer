@@ -2,11 +2,10 @@
 
 set -e  # Stop the script on any errors
 
-# Ensure figlet is installed before using it
-sudo apt update -y
-sudo apt install -y figlet
+# Install figlet first
+sudo apt update && sudo apt install -y figlet
 
-# Display the ASCII Art logo
+# Display ASCII Art with "Itz0Cat"
 figlet -f slant "Itz0Cat"
 
 echo "Modified by Itz0Cat"
@@ -55,8 +54,8 @@ npm run seed
 echo "[INFO] Creating a new user..."
 npm run createUser
 
-# Step 9: Start Skyport
-echo "[INFO] Starting Skyport..."
+# Step 9: Start Itz0Cat
+echo "[INFO] Starting Itz0Cat..."
 node .
 
 echo "[SUCCESS] Installation Completed!"

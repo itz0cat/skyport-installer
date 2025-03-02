@@ -1,15 +1,13 @@
 #!/bin/bash
 
-# Display the ASCII Art logo
-echo ""
-echo " ______   __               __   ____              __       "
-echo "/\__  _\ /\ \__          /'__`\/\  _`\           /\ \__    "
-echo "\/_/\ \/ \ \ ,_\  ____  /\ \/\ \ \ \/\_\     __  \ \ ,_\   "
-echo "   \ \ \  \ \ \/ /\_ ,`\\ \ \ \ \ \ \/_/_  /'__`\ \ \ \/   "
-echo "    \_\ \__\ \ \_\/_/  /_\ \ \_\ \ \ \L\ \/\ \L\.\_\ \ \_  "
-echo "    /\_____\\ \__\ /\____\\ \____/\ \____/\ \__/.\_\\ \__\ "
-echo "    \/_____/ \/__/ \/____/ \/___/  \/___/  \/__/\/_/ \/__/ "
-echo ""
+set -e  # Stop the script on any errors
+
+# Install figlet first
+sudo apt update && sudo apt install -y figlet
+
+# Display ASCII Art with "Itz0Cat"
+figlet -f slant "Itz0Cat"
+
 echo "🚀 Skyport Installer - Maintained by Itz0Cat"
 echo ""
 

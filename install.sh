@@ -1,17 +1,19 @@
- #!/bin/bash
-sudo apt install figlet
+#!/bin/bash
+
 set -e  # Stop the script on any errors
 
-figlet -f slant "Skyport"
+# Ensure figlet is installed before using it
+sudo apt update -y
+sudo apt install -y figlet
 
-echo "Modfied by Itz0Cat"
+# Display the ASCII Art logo
+figlet -f slant "Itz0Cat"
+
+echo "Modified by Itz0Cat"
 echo "OG script by SoloPlayzDev"
 
 # Step 1: Install necessary dependencies
 echo "[INFO] Installing necessary dependencies..."
-sudo apt update -y
-
-# Ensure curl, sudo, and gpg are installed
 sudo apt install -y curl sudo gpg
 
 # Step 2: Set up Node.js repository
